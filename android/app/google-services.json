@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "133198022632",
+    "project_id": "alien-resume-x",
+    "storage_bucket": "alien-resume-x.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133198022632:android:6cc5e1b77beab934a2065d",
+        "android_client_info": {
+          "package_name": "com.example.resumex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133198022632-7p6hklt53lf11lg3r0lsjivli9paf6qr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.resumex",
+            "certificate_hash": "5751135323ad765b46590f19860458b1ffe304be"
+          }
+        },
+        {
+          "client_id": "133198022632-0rprvgolihqhkublpi8ru2qjmi79esvr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBns4HGlvwsUe-neiiZdOM25IxRImgoq-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "133198022632-0rprvgolihqhkublpi8ru2qjmi79esvr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "133198022632-af0n8pqt36kccn2cv6ta85rscjnrbhc2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.resumex"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
