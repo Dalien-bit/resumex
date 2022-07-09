@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart'
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart' show ChangeNotifier, debugPrint;
 import 'package:resumex/database/database.dart';
+import 'package:resumex/functions/function.dart';
 import '../firebase_options.dart';
 
 enum AuthState {
@@ -38,6 +39,7 @@ class Authentication extends ChangeNotifier {
       if (_auth.currentUser == null) {
         _currentAuthState = AuthState.signedOut;
       } else if (user!.phoneNumber == null) {
+        debugPrint("Phone number not found");
         _currentAuthState = AuthState.verifyPhone;
       } else {
         _currentAuthState = AuthState.loggedIn;
@@ -112,8 +114,14 @@ class Authentication extends ChangeNotifier {
           ?.linkWithCredential(credential)
           .then((value) async {
         if (value.user != null) {
-          _currentAuthState = AuthState.loggedIn;
-          await db.addUser(value.user!);
+          dprint('Calling add user');
+          await db.addUser(value.user!).then((value) {
+            if (value == "200") {
+              _currentAuthState = AuthState.loggedIn;
+            } else {
+              debugPrint('Something went wrong this should not happen');
+            }
+          });
         }
       });
     } on FirebaseAuthException catch (e) {

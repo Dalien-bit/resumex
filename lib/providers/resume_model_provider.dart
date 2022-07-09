@@ -398,3 +398,46 @@ class ResumeModelProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+class ResumeProvider extends ChangeNotifier {
+  late Resume _resume;
+  late String _resumeId;
+
+  Resume get resume => _resume;
+  String get resumeId => _resumeId;
+
+  final _db = Database();
+  final _saveDetails = SaveDetails();
+  final _getData = GetData();
+  final _removeData = RemoveData();
+
+  ResumeProvider() {
+    init();
+  }
+
+  init() {
+    _resumeId = _getData.getResumeId();
+    _resume = Resume(
+      id: _resumeId,
+      acheivements: _getData.getAchievement(),
+      activities: _getData.getActivity(),
+      contact: _getData.getContact(),
+      educations: _getData.getEducations(),
+      onlineProfiles: _getData.getProfiles(),
+      projects: _getData.getProjects(),
+      skills: _getData.getSkills(),
+      workExperiences: _getData.getExperience(),
+    );
+    notifyListeners();
+  }
+
+  void saveContact(Contact contact) {
+    _resume.contact = contact;
+    _saveDetails.saveContact(contact, resumeId);
+  }
+
+  void saveExperience(WorkExperience experience) {
+    _resume.workExperiences!.add(experience);
+    _saveDetails.saveExperience(experience, resumeId);
+  }
+}

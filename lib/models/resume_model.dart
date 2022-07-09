@@ -36,6 +36,17 @@ class Contact {
       'country': country,
     };
   }
+
+  static Contact fromMap(Map<String, dynamic> map) {
+    return Contact(
+      name: map['name'],
+      phoneNumber: map['phonenumber'],
+      email: map['email'],
+      city: map['city'],
+      province: map['province'],
+      country: map['country'],
+    );
+  }
 }
 
 class WorkExperience {

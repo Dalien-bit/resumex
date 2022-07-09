@@ -17,10 +17,10 @@ Future<void> main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => InfosModel()),
-        ChangeNotifierProvider(create: (context) => ResumeModelProvider()),
         ChangeNotifierProvider(create: (context) => Authentication()),
         ChangeNotifierProvider(create: (context) => UserModel()),
+        ChangeNotifierProvider(create: (context) => ResumeModelProvider()),
+        ChangeNotifierProvider(create: (context) => InfosModel()),
       ],
       child: const MyApp(),
     ),

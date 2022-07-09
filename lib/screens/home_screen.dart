@@ -3,13 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter_svg_provider/flutter_svg_provider.dart';
-import 'package:resumex/models/profession_model.dart';
-import 'package:resumex/providers/providers.dart';
+import '../models/profession_model.dart';
+import '../providers/providers.dart';
 
 import '../models/models.dart';
-import '../providers/auth_provider.dart';
-import '../screens/display_info.dart';
 import '../widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {

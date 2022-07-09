@@ -110,7 +110,7 @@ class _WorkFormState extends State<WorkForm> {
                                 children: [
                                   IconButton(
                                     onPressed: () {
-                                      print('Delete pressed');
+                                      // print('Delete pressed');
                                       resumeModel.removeExperience(
                                         '0',
                                         index,

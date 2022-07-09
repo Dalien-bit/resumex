@@ -3,10 +3,6 @@ import 'dart:typed_data';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart';
 import 'package:printing/printing.dart';
-
-import '../../models/models.dart';
-import '../../widgets/widgets.dart';
-
 Future<Uint8List> generateDocument(
     PdfPageFormat format, double fontSize) async {
   final doc = Document(pageMode: PdfPageMode.outlines);

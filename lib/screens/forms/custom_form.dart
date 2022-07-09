@@ -10,6 +10,6 @@ class CustomForm extends StatefulWidget {
 class _CustomFormState extends State<CustomForm> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold();
   }
 }

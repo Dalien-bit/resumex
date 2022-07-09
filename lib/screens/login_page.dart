@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:resumex/functions/function.dart';
 import 'package:resumex/providers/auth_provider.dart';
 
 import '../widgets/widgets.dart';
@@ -366,6 +367,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         if (_formKey.currentState!.validate()) {
                                           loading(true);
                                           if (otp) {
+                                            dprint('Calling link phone number');
                                             await authInstance
                                                 .linkNumber(otpController.text)
                                                 .then((value) {
@@ -378,6 +380,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               }
                                             });
                                           } else {
+                                            dprint('Calling verify phone');
                                             await authInstance
                                                 .verifyPhoneNumber(
                                               '+91${phoneController.text}',
@@ -485,7 +488,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                             style: TextStyle(
                                               //fontSize: 10,
                                               color: Color.fromARGB(
-                                                  255, 42, 82, 102),
+                                                255,
+                                                42,
+                                                82,
+                                                102,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -509,7 +516,7 @@ class LoadingSpinner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircularProgressIndicator(
+    return const CircularProgressIndicator(
       color: Colors.black,
       strokeWidth: 8.0,
     );

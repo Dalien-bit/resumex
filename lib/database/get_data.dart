@@ -4,6 +4,30 @@ import '../functions/function.dart';
 import '../models/resume_model.dart';
 
 class GetData extends Database {
+  String getResumeId() {
+    dprint('Fetching resume Id');
+    String id = '';
+    userDoc.get().then((value) {
+      id = value.data()!['currentresumeid'];
+    });
+    return id;
+  }
+
+  Contact getContact() {
+    dprint('Fetching Contact');
+    Contact contact = Contact(
+        name: '',
+        email: '',
+        phoneNumber: '',
+        city: '',
+        province: '',
+        country: '');
+    detailsCol.doc('contact').get().then((value) {
+      contact = Contact.fromMap(value.data() ?? {});
+    });
+    dprint('Fetched Contacts successfully');
+    return contact;
+  }
 
   List<WorkExperience> getExperience() {
     dprint('Fetching Experiences');
