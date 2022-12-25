@@ -47,14 +47,6 @@ class _DisplayInfoState extends State<DisplayInfo> {
             color: Colors.black,
           ),
         ),
-        // IconButton(
-        //   onPressed: () {},
-        //   icon: const Icon(
-        //     Icons.print,
-        //     size: 30,
-        //     color: Colors.black,
-        //   ),
-        // ),
       ],
     );
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:resumex/providers/infos_model_provider.dart';
 
 import '../models/profession_model.dart';
 import '../screens/screens.dart';
@@ -182,6 +184,7 @@ class ResumeSlides extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final infos = Provider.of<InfosModel>(context);
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
@@ -197,17 +200,18 @@ class ResumeSlides extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return Center(
-                        child: Image(
-                          fit: BoxFit.fill,
-                          image: AssetImage(
-                            design.path,
-                          ),
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Center(
+                      child: Image(
+                        fit: BoxFit.fill,
+                        image: AssetImage(
+                          design.path,
                         ),
-                      );
-                    });
+                      ),
+                    );
+                  },
+                );
               },
               child: Image(
                 fit: BoxFit.fill,
@@ -255,6 +259,7 @@ class ResumeSlides extends StatelessWidget {
                     color: Colors.white,
                     text: 'Choose \n Template',
                     onPressed: () {
+                      infos.setDesign(design.name);
                       Navigator.of(context).pushNamed(DisplayInfo.routeName);
                     },
                   ),

@@ -139,6 +139,24 @@ class Project {
     this.id,
   });
 
+  List<String> getDesc() {
+    List<String> result = [];
+    String currentLine = '';
+    for (var i = 2; i < description.length; i++) {
+      if (description[i] == '\n') {
+        continue;
+      } else if (description[i] == '\u2022') {
+        result.add(currentLine);
+        i += 1;
+        currentLine = '';
+      } else {
+        currentLine += description[i];
+      }
+    }
+    result.add(currentLine);
+    return result;
+  }
+
   @override
   String toString() {
     return '\n$projectName { $tools }\n'

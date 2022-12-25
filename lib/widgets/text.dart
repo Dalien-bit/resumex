@@ -144,12 +144,15 @@ class UrlText extends pw.StatelessWidget {
 
   @override
   pw.Widget build(pw.Context context) {
-    return pw.UrlLink(
-      destination: url,
-      child: pw.Text(
-        text,
-        style: const pw.TextStyle(
-          decoration: pw.TextDecoration.underline,
+    return pw.Padding(
+      padding: const pw.EdgeInsets.only(left: 5, right: 5),
+      child: pw.UrlLink(
+        destination: url,
+        child: pw.Text(
+          text,
+          style: const pw.TextStyle(
+            decoration: pw.TextDecoration.underline,
+          ),
         ),
       ),
     );

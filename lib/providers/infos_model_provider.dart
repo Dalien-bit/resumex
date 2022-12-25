@@ -1,6 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:resumex/models/models.dart';
 
 class InfosModel extends ChangeNotifier {
+  int _currentDesign = 0;
+  int get currentDesign => _currentDesign;
+
+  setDesign(String design) {
+    final int index = ResumeDesign.sampleDesigns.indexWhere(
+      (element) => design == element.name,
+    );
+    if (index != -1) {
+      _currentDesign = index;
+    }
+  }
+
   final List<String> _infos = [
     'Contact',
     'Experience',

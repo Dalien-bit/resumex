@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final auth = Provider.of<Authentication>(context);
     final user = Provider.of<UserModel>(context);
-    final res = Provider.of<ResumeModelProvider>(context);
+    // final res = Provider.of<ResumeModelProvider>(context);
 
     final appBar = AppBar(
       elevation: 0,

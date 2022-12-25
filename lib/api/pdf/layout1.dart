@@ -8,7 +8,7 @@ import 'package:resumex/providers/infos_model_provider.dart';
 import '../../models/models.dart';
 import '../../widgets/widgets.dart';
 
-Future<Uint8List> generateDocument2(
+Future<Uint8List> generateDocumentLayout1(
   PdfPageFormat format,
   List<double> fontSize,
   Resume resume,
@@ -115,8 +115,7 @@ Future<Uint8List> generateDocument2(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Education'),
-                          Divider(),
+                          boldText('Education'),
                           ListView.builder(
                             itemCount: resume.educations!.length,
                             itemBuilder: (Context context, int index) {
@@ -173,8 +172,8 @@ Future<Uint8List> generateDocument2(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Experience'),
-                          Divider(),
+                          boldText('Experience'),
+                          // Divider(),
                           ListView.builder(
                             itemCount: resume.workExperiences!.length,
                             itemBuilder: (Context context, int index) {
@@ -219,8 +218,8 @@ Future<Uint8List> generateDocument2(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Projects'),
-                          Divider(),
+                          boldText('Projects'),
+                          // Divider(),
                           ListView.builder(
                             itemCount: resume.projects!.length,
                             itemBuilder: (Context context, int index) {
@@ -267,8 +266,8 @@ Future<Uint8List> generateDocument2(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Skills'),
-                          Divider(),
+                          boldText('Skills'),
+                          // Divider(),
                           ListView.builder(
                             itemCount: resume.skills!.length,
                             itemBuilder: (Context context, int index) {
@@ -307,8 +306,8 @@ Future<Uint8List> generateDocument2(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Achievements'),
-                          Divider(),
+                          boldText('Achievements'),
+                          // Divider(),
                           ListView.builder(
                             itemCount: resume.acheivements!.length,
                             itemBuilder: (Context context, int index) {
@@ -344,8 +343,8 @@ Future<Uint8List> generateDocument2(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Extra Curricular Activities'),
-                          Divider(),
+                          boldText('Extra Curricular Activities'),
+                          // Divider(),
                           ListView.builder(
                             itemCount: resume.activities!.length,
                             itemBuilder: (Context context, int index) {
@@ -374,6 +373,8 @@ Future<Uint8List> generateDocument2(
 
   return await doc.save();
 }
+
+Text boldText(String text) => Text(text, style: const TextStyle(fontSize: 15));
 
 List<String> processBulletedText(String text) {
   List<String> res = [];

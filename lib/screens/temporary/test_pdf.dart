@@ -20,6 +20,7 @@ class _TempPdfState extends State<TempPdf> {
   @override
   Widget build(BuildContext context) {
     final res = Provider.of<ResumeModelProvider>(context);
+    final infos = Provider.of<InfosModel>(context);
     return Scaffold(
       body: ListView(
         children: [
@@ -34,6 +35,8 @@ class _TempPdfState extends State<TempPdf> {
                 _marginLr,
                 _marginTb,
                 textScale,
+                0,
+                infos,
               ),
               canDebug: false,
             ),
