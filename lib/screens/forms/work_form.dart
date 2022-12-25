@@ -307,7 +307,9 @@ class _WorkFormState extends State<WorkForm> {
                                           endDate:
                                               endDateController[index].text,
                                           workDone: workController[index].text,
-                                          id: resume.workExperiences![index].id,
+                                          id: companyController[index].text +
+                                              startDateController[index].text +
+                                              endDateController[index].text,
                                         ),
                                         index,
                                       );

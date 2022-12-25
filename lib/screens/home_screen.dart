@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:resumex/screens/drawer/my_account.dart';
 import '../models/profession_model.dart';
 import '../providers/providers.dart';
 
@@ -35,8 +36,7 @@ class HomeScreen extends StatelessWidget {
               Icons.subject,
               color: Colors.black,
             ),
-            onPressed: () =>
-                Scaffold.of(context).openDrawer(), // <-- Opens drawer.
+            onPressed: () => Scaffold.of(context).openDrawer(),
           );
         },
       ),
@@ -48,18 +48,6 @@ class HomeScreen extends StatelessWidget {
           letterSpacing: 1,
         ),
       ),
-      actions: [
-        IconButton(
-          onPressed: () {
-            res.testResume();
-          },
-          icon: const Icon(
-            Icons.info_outline_rounded,
-            size: 30,
-            color: Colors.black,
-          ),
-        ),
-      ],
     );
     final appBarHeight = appBar.preferredSize.height;
     final bodyHeight = MediaQuery.of(context).size.height - appBarHeight;
@@ -209,7 +197,7 @@ class HomeDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.account_circle),
             onTap: () {
-              // auth.signOut();
+              Navigator.pushNamed(context, MyAccount.routeName);
             },
             title: const InfoText2(
               title: 'My Account',

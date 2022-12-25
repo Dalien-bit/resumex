@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resumex/screens/drawer/my_account.dart';
 import 'firebase_options.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -73,6 +74,7 @@ class _MyAppState extends State<MyApp> {
         ActivitiesForm.routeName: (context) => const ActivitiesForm(),
         DisplayPdf.routeName: (context) => const DisplayPdf(),
         LoginScreen.routeName: (context) => const LoginScreen(),
+        MyAccount.routeName: (context) => const MyAccount(),
       },
     );
   }

@@ -47,14 +47,14 @@ class _DisplayInfoState extends State<DisplayInfo> {
             color: Colors.black,
           ),
         ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.print,
-            size: 30,
-            color: Colors.black,
-          ),
-        ),
+        // IconButton(
+        //   onPressed: () {},
+        //   icon: const Icon(
+        //     Icons.print,
+        //     size: 30,
+        //     color: Colors.black,
+        //   ),
+        // ),
       ],
     );
 
@@ -74,166 +74,115 @@ class _DisplayInfoState extends State<DisplayInfo> {
                   'different sections from the \'+\' icon.',
             )
           : ListView.builder(
-            itemCount: infoModel.infos.length + 1,
-            itemBuilder: (BuildContext context, int index) {
-              if (index < infoModel.infos.length) {
-                if (infoModel.infosAvail[index]) {
-                  return Container(
-                    padding: const EdgeInsets.all(10),
-                    margin: const EdgeInsets.only(
-                      left: 20,
-                      right: 20,
-                      top: 10,
-                      bottom: 10,
-                    ),
-                    decoration: BoxDecoration(
-                      color: infoModel.colors[index],
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                HeadingText(
-                                  text: infoModel.infos[index],
-                                  color: Colors.white,
-                                ),
-                                infoModel.infos[index] == 'Other'
-                                    ? IconButton(
-                                        onPressed: () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              final textController =
-                                                  TextEditingController();
-                                              return AlertDialog(
-                                                title: const Text(
-                                                  'Create New Section',
-                                                ),
-                                                content: TextFormField(
-                                                  controller:
-                                                      textController,
-                                                ),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () {
-                                                      infoModel.addInfo(
-                                                        textController
-                                                            .text,
-                                                        true,
-                                                      );
-                                                      infoModel
-                                                          .updateInfosAvail(
-                                                        false,
-                                                        'Other',
-                                                      );
-                                                      Navigator.of(
-                                                              context)
-                                                          .pop();
-                                                    },
-                                                    child: const Text(
-                                                      'Add Section',
-                                                    ),
-                                                  )
-                                                ],
-                                              );
-                                            },
-                                          );
-                                        },
-                                        icon: const Icon(
-                                          Icons.border_color,
-                                          color: Colors.white,
-                                        ),
-                                      )
-                                    : const SizedBox(),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                IconButton(
-                                  onPressed: () {
-                                    if (index < routes.length) {
-                                      Navigator.of(context).pushNamed(
-                                        routes[index],
-                                      );
-                                    } else {}
-                                  },
-                                  icon: const Icon(
-                                    Icons.edit,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                IconButton(
-                                  onPressed: () {
-                                    infoModel.removeInfo(
-                                        infoModel.infos[index]);
-                                  },
-                                  icon: const Icon(
-                                    Icons.close,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                        ParaText(
-                          text: resume
-                                      .currentResume()
-                                      .resumeObjects[index] !=
-                                  null
-                              ? resume
-                                  .currentResume()
-                                  .resumeObjects[index]
-                                  .toString()
-                                  .substring(
-                                    1,
-                                    resume
-                                            .currentResume()
-                                            .resumeObjects[index]
-                                            .toString()
-                                            .length -
-                                        1,
-                                  )
-                              : '',
-                          color: Colors.white,
-                        )
-                      ],
-                    ),
-                  );
-                } else {
-                  return const SizedBox();
-                }
-              } else {
-                return Column(
-                  children: const [
-                    Divider(
-                      color: Colors.black,
-                      endIndent: 40,
-                      indent: 40,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 40.0, right: 40),
-                      child: Text(
-                        'You can add sections using the plus section at the bottom corner.'
-                        ' Use the edit button to modify each section',
+              itemCount: infoModel.infos.length + 1,
+              itemBuilder: (BuildContext context, int index) {
+                if (index < infoModel.infos.length) {
+                  if (infoModel.infosAvail[index]) {
+                    return Container(
+                      padding: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.only(
+                        left: 20,
+                        right: 20,
+                        top: 10,
+                        bottom: 10,
                       ),
-                    ),
-                    Divider(
-                      color: Colors.black,
-                      endIndent: 40,
-                      indent: 40,
-                    ),
-                  ],
-                );
-              }
-            },
-          ),
+                      decoration: BoxDecoration(
+                        color: infoModel.colors[index],
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  HeadingText(
+                                    text: infoModel.infos[index],
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  IconButton(
+                                    onPressed: () {
+                                      if (index < routes.length) {
+                                        Navigator.of(context).pushNamed(
+                                          routes[index],
+                                        );
+                                      } else {}
+                                    },
+                                    icon: const Icon(
+                                      Icons.edit,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      infoModel
+                                          .removeInfo(infoModel.infos[index]);
+                                    },
+                                    icon: const Icon(
+                                      Icons.close,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                          ParaText(
+                            text: resume.currentResume().resumeObjects[index] !=
+                                    null
+                                ? resume
+                                    .currentResume()
+                                    .resumeObjects[index]
+                                    .toString()
+                                    .substring(
+                                      1,
+                                      resume
+                                              .currentResume()
+                                              .resumeObjects[index]
+                                              .toString()
+                                              .length -
+                                          1,
+                                    )
+                                : '',
+                            color: Colors.white,
+                          )
+                        ],
+                      ),
+                    );
+                  } else {
+                    return const SizedBox();
+                  }
+                } else {
+                  return Column(
+                    children: const [
+                      Divider(
+                        color: Colors.black,
+                        endIndent: 40,
+                        indent: 40,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 40.0, right: 40),
+                        child: Text(
+                          'You can add sections using the plus section at the bottom corner.'
+                          ' Use the edit button to modify each section',
+                        ),
+                      ),
+                      Divider(
+                        color: Colors.black,
+                        endIndent: 40,
+                        indent: 40,
+                      ),
+                    ],
+                  );
+                }
+              },
+            ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showDialog(

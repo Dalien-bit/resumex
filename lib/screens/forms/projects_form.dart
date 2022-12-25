@@ -282,7 +282,7 @@ class _ProjectNametstate extends State<ProjectsForm> {
                                           tools: toolsController[index].text,
                                           additionals:
                                               additionalsController[index].text,
-                                          id: resume.workExperiences![index].id,
+                                          id: projectController[index].text,
                                         ),
                                         index,
                                       );

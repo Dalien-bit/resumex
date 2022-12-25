@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resumex/database/database.dart';
 import 'package:resumex/database/save_details.dart';
+import 'package:resumex/functions/function.dart';
 import 'package:resumex/models/resume_model.dart';
 
 import '../database/get_data.dart';
@@ -20,34 +21,34 @@ class ResumeModelProvider extends ChangeNotifier {
       skills: [],
     )
   ];
-  List<Resume> get resume => _resumes;
+  List<Resume> get resumes => _resumes;
   String _currentResumeId = '';
   int _currentIndex = 0;
   String get currentResumeId => _currentResumeId;
-  int get ridx => _currentIndex;
+  int get currentIndex => _currentIndex;
 
   final _db = Database();
   final _saveDetails = SaveDetails();
   final _getData = GetData();
   final _removeData = RemoveData();
 
+  Resume currentResume() {
+    return _resumes[_currentIndex];
+  }
+
   ResumeModelProvider() {
     init();
   }
-  init() {
-    currentResume().contact = _getData.getContact();
-    currentResume().workExperiences = _getData.getExperience();
-    currentResume().projects = _getData.getProjects();
-    currentResume().educations = _getData.getEducations();
-    currentResume().onlineProfiles = _getData.getProfiles();
-    currentResume().skills = _getData.getSkills();
-    currentResume().acheivements = _getData.getAchievement();
-    currentResume().activities = _getData.getActivity();
+  init() async {
+    _resumes[currentIndex].contact = await _getData.getContact();
+    _resumes[currentIndex].workExperiences = await _getData.getExperience();
+    _resumes[currentIndex].projects = await _getData.getProjects();
+    _resumes[currentIndex].educations = await _getData.getEducations();
+    _resumes[currentIndex].onlineProfiles = await _getData.getProfiles();
+    _resumes[currentIndex].skills = await _getData.getSkills();
+    _resumes[currentIndex].acheivements = await _getData.getAchievement();
+    _resumes[currentIndex].activities = await _getData.getActivity();
     notifyListeners();
-  }
-
-  Resume currentResume() {
-    return _resumes[_currentIndex];
   }
 
   void addResume(Resume resume) {
@@ -399,45 +400,35 @@ class ResumeModelProvider extends ChangeNotifier {
   }
 }
 
-class ResumeProvider extends ChangeNotifier {
-  late Resume _resume;
-  late String _resumeId;
+// class ResumeProvider extends ChangeNotifier {
+//   late Resume _resume;
+//   late String _resumeId;
 
-  Resume get resume => _resume;
-  String get resumeId => _resumeId;
+//   Resume get resume => _resume;
+//   String get resumeId => _resumeId;
 
-  final _db = Database();
-  final _saveDetails = SaveDetails();
-  final _getData = GetData();
-  final _removeData = RemoveData();
+//   final _db = Database();
+//   final _saveDetails = SaveDetails();
+//   final _getData = GetData();
+//   final _removeData = RemoveData();
 
-  ResumeProvider() {
-    init();
-  }
+//   ResumeProvider() {
+//     init();
+//   }
 
-  init() {
-    _resumeId = _getData.getResumeId();
-    _resume = Resume(
-      id: _resumeId,
-      acheivements: _getData.getAchievement(),
-      activities: _getData.getActivity(),
-      contact: _getData.getContact(),
-      educations: _getData.getEducations(),
-      onlineProfiles: _getData.getProfiles(),
-      projects: _getData.getProjects(),
-      skills: _getData.getSkills(),
-      workExperiences: _getData.getExperience(),
-    );
-    notifyListeners();
-  }
-
-  void saveContact(Contact contact) {
-    _resume.contact = contact;
-    _saveDetails.saveContact(contact, resumeId);
-  }
-
-  void saveExperience(WorkExperience experience) {
-    _resume.workExperiences!.add(experience);
-    _saveDetails.saveExperience(experience, resumeId);
-  }
-}
+//   init() {
+//     _resumeId = _getData.getResumeId();
+//     _resume = Resume(
+//       id: _resumeId,
+//       acheivements: _getData.getAchievement(),
+//       activities: _getData.getActivity(),
+//       contact: _getData.getContact(),
+//       educations: _getData.getEducations(),
+//       onlineProfiles: _getData.getProfiles(),
+//       projects: _getData.getProjects(),
+//       skills: _getData.getSkills(),
+//       workExperiences: _getData.getExperience(),
+//     );
+//     notifyListeners();
+//   }
+// }

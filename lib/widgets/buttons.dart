@@ -114,11 +114,12 @@ class FadedChipButton extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: fade ?const Color.fromARGB(255, 199, 197, 197) : color,
+          backgroundColor:
+              fade ? const Color.fromARGB(255, 199, 197, 197) : color,
           elevation: 10,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
-            side:  BorderSide(color: fade ?Colors.grey : Colors.black),
+            side: BorderSide(color: fade ? Colors.grey : Colors.black),
           ),
         ),
         onPressed: onPressed,
@@ -287,7 +288,9 @@ class ProfessionButton extends StatelessWidget {
           color: Color.fromARGB(255, 201, 201, 201),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context).pushNamed(DisplayInfo.routeName);
+      },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [

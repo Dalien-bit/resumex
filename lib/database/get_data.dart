@@ -13,26 +13,29 @@ class GetData extends Database {
     return id;
   }
 
-  Contact getContact() {
+  Future<Contact> getContact() async {
     dprint('Fetching Contact');
     Contact contact = Contact(
-        name: '',
-        email: '',
-        phoneNumber: '',
-        city: '',
-        province: '',
-        country: '');
-    detailsCol.doc('contact').get().then((value) {
+      name: '',
+      email: '',
+      phoneNumber: '',
+      city: '',
+      province: '',
+      country: '',
+    );
+    await detailsCol.doc('contact').get().then((value) {
+      dprint('Here goes the contact');
+      dprint(value.data());
       contact = Contact.fromMap(value.data() ?? {});
     });
     dprint('Fetched Contacts successfully');
     return contact;
   }
 
-  List<WorkExperience> getExperience() {
+  Future<List<WorkExperience>> getExperience() async {
     dprint('Fetching Experiences');
     List<WorkExperience> experience = [];
-    detailsCol
+    await detailsCol
         .doc('workexperience')
         .collection('workexperience')
         .get()
@@ -46,10 +49,10 @@ class GetData extends Database {
     return experience;
   }
 
-  List<Project> getProjects() {
+  Future<List<Project>> getProjects() async {
     dprint('Fetching projects');
     List<Project> projects = [];
-    detailsCol
+    await detailsCol
         .doc('projects')
         .collection('projects')
         .get()
@@ -63,10 +66,10 @@ class GetData extends Database {
     return projects;
   }
 
-  List<Education> getEducations() {
+  Future<List<Education>> getEducations() async {
     dprint("Trying to get education");
     List<Education> educations = [];
-    detailsCol
+    await detailsCol
         .doc('educations')
         .collection('educations')
         .get()
@@ -80,10 +83,10 @@ class GetData extends Database {
     return educations;
   }
 
-  List<OnlineProfile> getProfiles() {
+  Future<List<OnlineProfile>> getProfiles() async {
     dprint("Trying to get profiles");
     List<OnlineProfile> profiles = [];
-    detailsCol
+    await detailsCol
         .doc('onlineprofiles')
         .collection('onlineprofiles')
         .get()
@@ -97,10 +100,10 @@ class GetData extends Database {
     return profiles;
   }
 
-  List<Skill> getSkills() {
+  Future<List<Skill>> getSkills() async {
     dprint("Trying to get skills");
     List<Skill> skills = [];
-    detailsCol
+    await detailsCol
         .doc('skills')
         .collection('skills')
         .get()
@@ -114,10 +117,10 @@ class GetData extends Database {
     return skills;
   }
 
-  List<Achievement> getAchievement() {
+  Future<List<Achievement>> getAchievement() async {
     dprint("Trying to get avhievements");
     List<Achievement> achievements = [];
-    detailsCol
+    await detailsCol
         .doc('achievements')
         .collection('achievements')
         .get()
@@ -131,10 +134,10 @@ class GetData extends Database {
     return achievements;
   }
 
-  List<Activity> getActivity() {
+  Future<List<Activity>> getActivity() async {
     dprint("Trying to get activities");
     List<Activity> activities = [];
-    detailsCol
+    await detailsCol
         .doc('activities')
         .collection('activities')
         .get()

@@ -5,9 +5,8 @@ import '../functions/function.dart';
 import '../models/resume_model.dart';
 
 class SaveDetails extends Database {
-  saveContact(Contact contact, String resumeId) {
+  saveContact(Contact contact) {
     final data = contact.toMap();
-    data['resumeid'] = resumeId;
     detailsCol
         .doc('contact')
         .update(data)
@@ -17,7 +16,7 @@ class SaveDetails extends Database {
         );
   }
 
-  String saveExperience(WorkExperience experience, [String? resumeId]) {
+  String saveExperience(WorkExperience experience) {
     detailsCol.doc('workexperience').set({}, SetOptions(merge: true));
     dprint('Saving Experience...');
     final id = experience.id ??
@@ -44,7 +43,7 @@ class SaveDetails extends Database {
         .doc('projects')
         .collection('projects')
         .doc(id)
-        .update(data)
+        .set(data, SetOptions(merge: true))
         .onError((error, stackTrace) => dprint(error))
         .then(
           (_) => dprint('Successfuly saved project'),

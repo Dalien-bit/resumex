@@ -183,6 +183,7 @@ class _OnlineProfilesFormState extends State<OnlineProfilesForm> {
                                       resumeModel.addOnlineProfile(
                                         '0',
                                         OnlineProfile(
+                                            id: platformController[index].text,
                                             platform:
                                                 platformController[index].text,
                                             link: linkController[index].text),
