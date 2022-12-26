@@ -160,8 +160,8 @@ class _ActivitiesFormState extends State<ActivitiesForm> {
                                       resumeModel.addActivity(
                                         '0',
                                         Activity(
-                                          activity:
-                                              activitiesController[index].text,
+                                          activity: activitiesController[index].text,
+                                          id: activitiesController[index].text,
                                         ),
                                         index,
                                       );

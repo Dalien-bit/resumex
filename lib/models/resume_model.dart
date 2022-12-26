@@ -73,12 +73,12 @@ class WorkExperience {
   List<String> getWork() {
     List<String> result = [];
     String currentLine = '';
-    for (var i = 2; i < workDone.length; i++) {
+    for (var i = 1; i < workDone.length; i++) {
       if (workDone[i] == '\n') {
         continue;
       } else if (workDone[i] == '\u2022') {
         result.add(currentLine);
-        i += 1;
+        // i += 1;
         currentLine = '';
       } else {
         currentLine += workDone[i];
@@ -142,12 +142,11 @@ class Project {
   List<String> getDesc() {
     List<String> result = [];
     String currentLine = '';
-    for (var i = 2; i < description.length; i++) {
+    for (var i = 1; i < description.length; i++) {
       if (description[i] == '\n') {
         continue;
       } else if (description[i] == '\u2022') {
         result.add(currentLine);
-        i += 1;
         currentLine = '';
       } else {
         currentLine += description[i];

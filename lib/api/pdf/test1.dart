@@ -24,15 +24,16 @@ Future<Uint8List> generateDocument2(
   final font1 = await PdfGoogleFonts.openSansRegular();
   final font2 = await PdfGoogleFonts.openSansBold();
   final font3 = await PdfGoogleFonts.openSansItalic();
+  // int fontSize = 12;
 
   List<Widget> workText = [];
   for (var i = 0; i < resume.workExperiences!.length; i++) {
-    workText.add(transform(resume.workExperiences![i].getWork()));
+    workText.add(transform(resume.workExperiences![i].getWork(), fontSize[1]));
   }
 
   List<Widget> projectText = [];
   for (var i = 0; i < resume.projects!.length; i++) {
-    projectText.add(transform(resume.projects![i].getDesc()));
+    projectText.add(transform(resume.projects![i].getDesc(), fontSize[1]));
   }
   doc.addPage(
     MultiPage(
@@ -138,13 +139,19 @@ Future<Uint8List> generateDocument2(
                                               TextSpan(
                                                 text:
                                                     '${resume.educations![index].institute}\n',
-                                                style: TextStyle(font: font2),
+                                                style: TextStyle(
+                                                    font: font2,
+                                                    fontSize: fontSize[1]),
                                               ),
                                               TextSpan(
                                                 text:
                                                     '${resume.educations![index].programme} - '
                                                     '${resume.educations![index].course} '
                                                     '${resume.educations![index].score} ',
+                                                style: TextStyle(
+                                                  // font: font2,
+                                                  fontSize: fontSize[1],
+                                                ),
                                               ),
                                             ],
                                           ),
@@ -152,7 +159,9 @@ Future<Uint8List> generateDocument2(
                                         Text(
                                           '${resume.educations![index].startDate} - '
                                           '${resume.educations![index].endDate}',
-                                          style: TextStyle(font: font3),
+                                          style: TextStyle(
+                                              font: font3,
+                                              fontSize: fontSize[1]),
                                         )
                                       ],
                                     ),
@@ -190,13 +199,19 @@ Future<Uint8List> generateDocument2(
                                         Text(
                                           '${resume.workExperiences![index].companyName} | '
                                           '${resume.workExperiences![index].role}',
-                                          style: TextStyle(font: font2),
+                                          style: TextStyle(
+                                            font: font2,
+                                            fontSize: fontSize[1],
+                                          ),
                                         ),
                                         Text(
                                           '${resume.workExperiences![index].address} | '
                                           '${resume.workExperiences![index].startDate} - '
                                           '${resume.workExperiences![index].endDate}',
-                                          style: TextStyle(font: font3),
+                                          style: TextStyle(
+                                            font: font3,
+                                            fontSize: fontSize[1],
+                                          ),
                                         )
                                       ],
                                     ),
@@ -244,7 +259,10 @@ Future<Uint8List> generateDocument2(
                                         Expanded(child: SizedBox()),
                                         Text(
                                           resume.projects![index].tools,
-                                          style: TextStyle(font: font3),
+                                          style: TextStyle(
+                                            font: font3,
+                                            fontSize: fontSize[1],
+                                          ),
                                         )
                                       ],
                                     ),
@@ -275,21 +293,11 @@ Future<Uint8List> generateDocument2(
                               return Padding(
                                 padding:
                                     const EdgeInsets.only(left: 30, right: 30),
-                                child: Column(
+                                child: Row(
                                   children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          resume.skills![index].domain,
-                                        ),
-                                        Text(':'),
-                                        Text(
-                                          resume.skills![index].skills,
-                                        ),
-                                        SizedBox(),
-                                      ],
+                                    Text(
+                                      '${resume.skills![index].domain}:   ${resume.skills![index].skills}',
+                                      style: TextStyle(fontSize: fontSize[1]),
                                     ),
                                   ],
                                 ),
@@ -326,6 +334,7 @@ Future<Uint8List> generateDocument2(
                                       width: 450,
                                       child: Text(
                                         resume.acheivements![index].achievement,
+                                        style: TextStyle(fontSize: fontSize[1]),
                                       ),
                                     ),
                                   ],
@@ -356,8 +365,10 @@ Future<Uint8List> generateDocument2(
                                 ),
                                 child: SizedBox(
                                   width: 500,
-                                  child:
-                                      Text(resume.activities![index].activity),
+                                  child: Text(
+                                    resume.activities![index].activity,
+                                    style: TextStyle(fontSize: fontSize[1]),
+                                  ),
                                 ),
                               );
                             },
@@ -394,7 +405,7 @@ List<String> processBulletedText(String text) {
   return res;
 }
 
-Widget transform(List<String> text) {
+Widget transform(List<String> text, double size) {
   List<Widget> list = [];
   for (var i = 0; i < text.length; i++) {
     list.add(
@@ -407,7 +418,7 @@ Widget transform(List<String> text) {
           ),
           SizedBox(
             width: 450,
-            child: Text(text[i]),
+            child: Text(text[i], style: TextStyle(fontSize: size)),
           ),
         ],
       ),

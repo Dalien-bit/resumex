@@ -191,6 +191,7 @@ class _SkillsFormState extends State<SkillsForm> {
                                         Skill(
                                           domain: domainController[index].text,
                                           skills: skillController[index].text,
+                                          id: domainController[index].text,
                                         ),
                                         index,
                                       );

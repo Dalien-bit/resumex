@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resumex/database/database.dart';
 import 'package:resumex/database/save_details.dart';
-import 'package:resumex/functions/function.dart';
 import 'package:resumex/models/resume_model.dart';
 
 import '../database/get_data.dart';
@@ -26,7 +25,8 @@ class ResumeModelProvider extends ChangeNotifier {
   int _currentIndex = 0;
   String get currentResumeId => _currentResumeId;
   int get currentIndex => _currentIndex;
-
+  bool _loading = false;
+  bool get isLoading => _loading;
   final _db = Database();
   final _saveDetails = SaveDetails();
   final _getData = GetData();
@@ -40,14 +40,21 @@ class ResumeModelProvider extends ChangeNotifier {
     init();
   }
   init() async {
-    _resumes[currentIndex].contact = await _getData.getContact();
-    _resumes[currentIndex].workExperiences = await _getData.getExperience();
-    _resumes[currentIndex].projects = await _getData.getProjects();
-    _resumes[currentIndex].educations = await _getData.getEducations();
-    _resumes[currentIndex].onlineProfiles = await _getData.getProfiles();
-    _resumes[currentIndex].skills = await _getData.getSkills();
-    _resumes[currentIndex].acheivements = await _getData.getAchievement();
-    _resumes[currentIndex].activities = await _getData.getActivity();
+    _loading = true;
+    notifyListeners();
+    try {
+      _resumes[currentIndex].contact = await _getData.getContact();
+      _resumes[currentIndex].workExperiences = await _getData.getExperience();
+      _resumes[currentIndex].projects = await _getData.getProjects();
+      _resumes[currentIndex].educations = await _getData.getEducations();
+      _resumes[currentIndex].onlineProfiles = await _getData.getProfiles();
+      _resumes[currentIndex].skills = await _getData.getSkills();
+      _resumes[currentIndex].acheivements = await _getData.getAchievement();
+      _resumes[currentIndex].activities = await _getData.getActivity();
+    } catch (e) {
+      rethrow;
+    }
+    _loading = false;
     notifyListeners();
   }
 

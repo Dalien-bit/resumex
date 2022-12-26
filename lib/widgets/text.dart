@@ -37,7 +37,7 @@ class InfoText extends StatelessWidget {
       title,
       style: TextStyle(
         letterSpacing: 1.20,
-        fontSize: 14,
+        fontSize: 12,
         color: color,
       ),
     );
@@ -152,6 +152,7 @@ class UrlText extends pw.StatelessWidget {
           text,
           style: const pw.TextStyle(
             decoration: pw.TextDecoration.underline,
+            fontSize: 10,
           ),
         ),
       ),

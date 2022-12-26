@@ -41,7 +41,7 @@ class _DisplayPdfState extends State<DisplayPdf> {
       if (infos.currentDesign == 2) {
         return generateDocumentLayout1(
           PdfPageFormat.a4,
-          [0, 10, 15, 25],
+          [0, 10, 12, 25],
           res.currentResume(),
           _marginLr,
           _marginTb,

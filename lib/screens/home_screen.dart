@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:resumex/screens/display_info.dart';
 import 'package:resumex/screens/drawer/my_account.dart';
 import '../models/profession_model.dart';
 import '../providers/providers.dart';
@@ -29,21 +30,22 @@ class HomeScreen extends StatelessWidget {
     final appBar = AppBar(
       elevation: 0,
       backgroundColor: Colors.white,
-      leading: Builder(
-        builder: (context) {
-          return IconButton(
-            icon: const Icon(
-              Icons.subject,
-              color: Colors.black,
-            ),
-            onPressed: () => Scaffold.of(context).openDrawer(),
-          );
-        },
-      ),
+      // leading: Builder(
+      //   builder: (context) {
+      //     return IconButton(
+      //       icon: const Icon(
+      //         Icons.subject,
+      //         color: Colors.black,
+      //       ),
+      //       onPressed: () => Scaffold.of(context).openDrawer(),
+      //     );
+      //   },
+      // ),
       title: const Text(
         'ResumeX',
         style: TextStyle(
           color: Colors.black,
+          fontSize: 30,
           fontWeight: FontWeight.w300,
           letterSpacing: 1,
         ),
@@ -57,9 +59,12 @@ class HomeScreen extends StatelessWidget {
       appBar: appBar,
       body: SizedBox(
         height: bodyHeight,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
+          // crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            const SizedBox(
+              height: 20,
+            ),
             CarouselSlider.builder(
               options: CarouselOptions(
                 autoPlay: false,
@@ -80,45 +85,47 @@ class HomeScreen extends StatelessWidget {
               carouselController: _carouselController,
             ),
             const SizedBox(
-              height: 55,
-              child: Padding(
-                padding: EdgeInsets.only(
-                  top: 8.0,
-                  left: 20,
-                ),
-                child: Text(
-                  'Choose from Profession',
-                  style: TextStyle(
-                    fontFamily: 'AbrilFatface',
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 8.0, right: 100.0, left: 100, bottom: 8),
+              child: ChipButton(
+                color: Colors.black,
+                text: 'Quick Resume',
+                onPressed: () {
+                  Navigator.of(context).pushNamed(DisplayInfo.routeName);
+                },
               ),
             ),
-            SizedBox(
-              height: bodyHeight * .4,
-              child: Container(
-                margin: const EdgeInsets.only(
-                  left: 5,
-                  right: 5,
-                ),
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                  ),
-                  itemCount: Profession.sampleProfession.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final profession = Profession.sampleProfession[index];
-                    return ProfessionButton(profession: profession);
-                  },
-                ),
-              ),
+            const SizedBox(
+              height: 20,
             ),
+            const Padding(
+              padding: EdgeInsets.only(left: 30.0, bottom: 10),
+              child: HeadingText(color: Colors.black, text: 'Tips: '),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 50.0),
+              child: InfoText(
+                title: '1. Look for keywords in the job posting '
+                    '\n2. Review resume examples for your industry'
+                    '\n3. Make it simple and easy to read.'
+                    '\n4. Make it brief and Include Numbers'
+                    '\n5. Include only relevant information and put it first'
+                    '\n6. Use active language'
+                    '\n7. Call attention to important achievements'
+                    '\n8. Only include subheadings and sections you need'
+                    '\n9. Choose appropriate margins'
+                    '\n10. Proofread and edit'
+                    '\n11. Decide whether you need a unique resume for different jobs',
+                color: Colors.black,
+              ),
+            )
           ],
         ),
       ),
-      drawer: HomeDrawer(user: user, auth: auth),
+      // drawer: HomeDrawer(user: user, auth: auth),
     );
   }
 }

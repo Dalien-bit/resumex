@@ -259,6 +259,7 @@ class _EducationFormState extends State<EducationForm> {
                                           startDate:
                                               startDateController[index].text,
                                           score: scoreController[index].text,
+                                          id: instituteController[index].text + endDateController[index].text
                                         ),
                                         index,
                                       );

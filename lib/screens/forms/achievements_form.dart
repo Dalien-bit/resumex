@@ -162,6 +162,7 @@ class _AchievementsFormState extends State<AchievementsForm> {
                                         Achievement(
                                           achievement:
                                               achievementController[index].text,
+                                          id: achievementController[index].text,
                                         ),
                                         index,
                                       );

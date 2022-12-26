@@ -58,10 +58,13 @@ class InfosModel extends ChangeNotifier {
   int get trueCount => _trueCount;
 
   void addInfo(String info, bool value) {
-    _infos.add(info);
+    // _infos.add(info);
     _infosAvail.add(value);
     _colors.add(Colors.black);
     notifyListeners();
+  }
+
+  void addAll() {
   }
 
   void removeInfo(String info) {
