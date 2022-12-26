@@ -5,7 +5,8 @@ It has different templates to choose from and a variety of sections to add.
 
 you can checkout the app at
 https://drive.google.com/file/d/1mO1xe6QjTZnO9ULUuzlDMnP57KEk9otw/view?usp=drivesdk
-
+or download the app at
+https://drive.google.com/file/d/1mQP2yOo-qo7bJBq8N3sy63_OFQUJTgej/view?usp=drivesdk
 
 :)
 
